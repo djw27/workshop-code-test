@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
+// The test outline actually specifies that the states
+// and cities should be displayed in rows rather than
+// in columns:
+// state - city - city
+// state - city
+// state - city
+// etc
 export const CityContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   margin: 16px;
 `;
 
@@ -11,6 +20,6 @@ export const City = styled.div`
   width: 150px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 32px;
+  margin-right: 16px;
 `;
 

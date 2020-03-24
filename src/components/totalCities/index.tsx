@@ -7,6 +7,8 @@ interface IProps {
   inputError: boolean,
 }
 
+// This is all good - personally I'd simply use a `length`
+// check on the cities input, rather than using lodash
 export default ({ cities, inputError }: IProps) => {
   return (
     <div>

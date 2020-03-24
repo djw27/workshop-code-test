@@ -9,6 +9,9 @@ interface IProps {
   city: CityType[]
 }
 
+// The only confusing thing here is some of the variable
+// names - `city` is actually an array of city + state
+// objects
 export default ({ city, state }: IProps) => {
   return (
     <CityContainer>

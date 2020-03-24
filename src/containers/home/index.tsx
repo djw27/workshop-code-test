@@ -12,18 +12,26 @@ export default () => {
   const [inputError, setInputError] = useState(false);
 
   const search = async () => {
-    setLoading(true);
+    // It's important to make sure that the loading state is
+    // only set *after* any functionality that will exit the
+    // function. Otherwise the loading indicator will display
+    // and not hide if there is no input, or an error
     if (input.length === 0 || inputError) {
       return;
     }
+    setLoading(true);
     setCities(await getCities(input));
     setLoading(false);
   }
 
   const handleChange = (value: string) => {
-    const numbers = /[0-9]/;
-    const whiteSpace = /\s/;
-    if (value.match(numbers) || value.match(whiteSpace)) {
+    // The previous regex took the approach of blacklisting,
+    // rather than whitelisting, and as a result, some things
+    // slipped through, including special chars: ,./ etc
+    //
+    // By whitelisting it's clear what text is allowed
+    const lettersOnly = /^[a-zA-Z]+$/;
+    if (!value.match(lettersOnly)) {
       setInputError(true);
       return setInput(value);
     }
